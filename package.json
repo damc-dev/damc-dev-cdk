@@ -35,13 +35,12 @@
   ],
   "lint-staged": {
     "packages/**/*.{ts}": [
-      "yarn lint",
-      "git add"
+      "yarn lint"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn-staged"
+      "pre-commit": "lint-staged"
     }
   }
 }
