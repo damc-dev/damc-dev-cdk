@@ -1,0 +1,20 @@
+{
+  "name": "damc-dev-cdk",
+  "version": "1.0.0",
+  "description": "Useful CDK constructs and applications",
+  "author": "David McElligott",
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --stream",
+    "test": "lerna run test --stream"
+  },
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lerna": "^3.22.0"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
