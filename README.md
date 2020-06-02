@@ -44,6 +44,7 @@ Test packages
 ```
 yarn test
 ```
+<<<<<<< HEAD
 
 ## Contributing
 
@@ -65,3 +66,5 @@ npx git-cz
 
 Create a Github Pull Request
 
+=======
+>>>>>>> d5b71daad8aac3b12ceb950ee5481ce7d8ee44d0
