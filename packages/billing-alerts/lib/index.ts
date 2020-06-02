@@ -1,32 +1,63 @@
-import * as sns from '@aws-cdk/aws-sns';
-import * as subs from '@aws-cdk/aws-sns-subscriptions';
-import * as sqs from '@aws-cdk/aws-sqs';
 import * as cdk from '@aws-cdk/core';
+import * as cw_actions from '@aws-cdk/aws-cloudwatch-actions';
+import * as sns from '@aws-cdk/aws-sns';
+import * as subscriptions from '@aws-cdk/aws-sns-subscriptions';
 
-export interface BillingAlertsProps {
-  /**
-   * The visibility timeout to be configured on the SQS Queue, in seconds.
-   *
-   * @default Duration.seconds(300)
-   */
-  readonly visibilityTimeout?: cdk.Duration;
+import { Alarm, Metric, ComparisonOperator } from '@aws-cdk/aws-cloudwatch';
+
+export interface BillingAlertProps {
+    /**
+     * The threshold of estimated charges in dollars to alert on
+     * @default = 1
+     */
+    readonly alarmThreshold?: number;
+
+    /**
+     * Email addresses to send alerts to
+     * @default = []
+     */
+    readonly emailSubscriptions?: string[];
 }
 
-export class BillingAlerts extends cdk.Construct {
-  /** @returns the ARN of the SQS queue */
-  public readonly queueArn: string;
+export class BillingAlert extends cdk.Construct {
+    /**
+     * SNS topic alerts get published to
+     */
+    public readonly topic: sns.Topic;
 
-  constructor(scope: cdk.Construct, id: string, props: BillingAlertsProps = {}) {
-    super(scope, id);
+    /**
+     * Billing alarm
+     */
+    public readonly alarm: Alarm;
 
-    const queue = new sqs.Queue(this, 'BillingAlertsQueue', {
-      visibilityTimeout: props.visibilityTimeout || cdk.Duration.seconds(300)
-    });
+    constructor(scope: cdk.Construct, id: string, props: BillingAlertProps = {}) {
+        super(scope, id);
 
-    const topic = new sns.Topic(this, 'BillingAlertsTopic');
+        this.topic = new sns.Topic(this, 'BillingTopic');
 
-    topic.addSubscription(new subs.SqsSubscription(queue));
+        const estimatedCharges = new Metric({
+            namespace: 'AWS/Billing',
+            metricName: 'EstimatedCharges',
+            dimensions: {
+                Currency: 'USD'
+            }
+        });
 
-    this.queueArn = queue.queueArn;
-  }
+        this.alarm = new Alarm(this, 'BillingAlarm', {
+            alarmDescription: 'Alert when estimated charges exceed threshold',
+            metric: estimatedCharges,
+            threshold: props.alarmThreshold || 1,
+            comparisonOperator: ComparisonOperator.GREATER_THAN_THRESHOLD,
+            evaluationPeriods: 1,
+            statistic: 'max'
+        });
+
+        this.alarm.addAlarmAction(new cw_actions.SnsAction(this.topic));
+
+        if(props.emailSubscriptions !== undefined && props.emailSubscriptions.length > 0) {
+            props.emailSubscriptions.forEach((email) => {
+                this.topic.addSubscription(new subscriptions.EmailSubscription(email));
+            });
+        }
+    }
 }
