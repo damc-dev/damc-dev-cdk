@@ -1,8 +1,10 @@
 # damc-dev-cdk
 
-# Packages
+A monorepo project managed with lerna that builds and publishs CDK construct libraries for multiple languages using JSII
 
-## damc-dev-billing-alerts
+## Packages
+
+### damc-dev-billing-alerts
 
 Construct for creating alerts once AWS Billing Estimated Charges is greater then the configured threshold
 
@@ -19,7 +21,11 @@ Construct for creating alerts once AWS Billing Estimated Charges is greater then
   });
 ```
 
-# Commands
+## Build 
+
+Run the following commands from the project root and they will use lerna to run against all packages
+
+### Commands
 
 Install package dependencies
 
