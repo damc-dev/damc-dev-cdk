@@ -1,5 +1,5 @@
 {
-  "name": "damc-dev-cdk",
+  "name": "damc-dev",
   "version": "1.0.0",
   "description": "Useful CDK constructs and applications",
   "author": "David McElligott",
