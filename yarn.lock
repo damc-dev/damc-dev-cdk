@@ -843,10 +843,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@jsii/spec@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.5.0.tgz#55a6d7395862c287cff18cf6cf8d166b715d1e49"
-  integrity sha512-gmqCGiAuXd8XFwy2uqqwoA0VBhADbrPuuowK7Qfy44ZIzv2gm0txlSkKA5elwRFdqlYHCAl6GYcimZemm6x/rQ==
+"@jsii/spec@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.6.0.tgz#a93fa8eb22684a2263f70c1ae2b7143e43548149"
+  integrity sha512-6S863f3YQCLG00236OOT29EOqZZRFQEQcfACZ5f3Ph1PApRRndeZLsELm23MS6cCktdgdptRzaYR0HCupajBHQ==
   dependencies:
     jsonschema "^1.2.6"
 
@@ -5221,16 +5221,16 @@ jsesc@^2.5.1:
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
 jsii@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.5.0.tgz#dcf62a953bb765e0c55ba23b0711f25a349baafb"
-  integrity sha512-1dWN55Bttwx9zr58iSOxCkj9O99YKtzs/51FNwjGs20KNXvVfiY6ZBnUGhq57G5mSmb+NZosX71EFknoYrFoLA==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.6.0.tgz#35a60fed491bb3e4fa2c35965f9f2bb8593f2165"
+  integrity sha512-g9L2xBnKCrzfMPkaioYSz8lYATYGt8SWimycq9HxfszaI0/QjKv+68E5pgTimy6EZil+2O/KguiYqlK9jNQE7A==
   dependencies:
-    "@jsii/spec" "^1.5.0"
+    "@jsii/spec" "^1.6.0"
     case "^1.6.3"
     colors "^1.4.0"
     deep-equal "^2.0.3"
     fs-extra "^9.0.0"
-    log4js "^6.2.1"
+    log4js "^6.3.0"
     semver "^7.3.2"
     semver-intersect "^1.4.0"
     sort-json "^2.0.0"
@@ -5567,7 +5567,7 @@ log-update@^4.0.0:
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
 
-log4js@^6.2.1:
+log4js@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/log4js/-/log4js-6.3.0.tgz#10dfafbb434351a3e30277a00b9879446f715bcb"
   integrity sha512-Mc8jNuSFImQUIateBFwdOQcmC6Q5maU0VVvdC2R6XMb66/VnT+7WS4D/0EeNMZu1YODmJe5NIn2XftCzEocUgw==
