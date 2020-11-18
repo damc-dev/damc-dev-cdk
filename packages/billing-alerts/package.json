@@ -21,7 +21,7 @@
     "lint": "eslint --fix './**/*.ts'"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.42.1",
+    "@aws-cdk/assert": "1.74.0",
     "@types/jest": "^25.2.3",
     "@types/node": "14.0.10",
     "jest": "^25.5.0",
